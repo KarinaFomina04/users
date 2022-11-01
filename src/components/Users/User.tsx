@@ -1,7 +1,7 @@
 import React from 'react';
 import style from './User.module.scss';
 
-export const User: React.FC<any> = ({id, email, first_name, last_name, avatar}) => (
+export const User: React.FC<any> = ({id, email, first_name, last_name, avatar, onClickInvite, isInvited}) => (
   <li>
     <div>
       <img className={style.avatar} src={avatar} alt="User" />
@@ -15,6 +15,10 @@ export const User: React.FC<any> = ({id, email, first_name, last_name, avatar}) 
         </p>
       </div>
     </div>
-    <img className={style.action} src="/assets/plus.svg" alt="Action" />
+    <img 
+    onClick={() => onClickInvite(id)} 
+    className={style.action} 
+    src={`/assets/${isInvited ? 'minus' : 'plus'}.svg`} 
+    alt="Action" />
   </li>
 );
